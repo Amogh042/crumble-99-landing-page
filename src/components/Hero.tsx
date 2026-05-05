@@ -33,10 +33,7 @@ export const Hero = () => {
           className="absolute inset-0 w-full h-full object-cover"
           poster="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1920"
         >
-          <source
-            src="https://cdn.coverr.co/videos/coverr-chocolate-chip-cookies-being-baked-7986/1080p.mp4"
-            type="video/mp4"
-          />
+          <source src="/hero.mp4" type="video/mp4" />
         </video>
 
         {/* Overlays */}
