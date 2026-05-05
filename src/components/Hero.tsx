@@ -63,7 +63,7 @@ export const Hero = () => {
               <p className="font-display text-gold text-2xl md:text-3xl mb-2">crumble 99 presents —</p>
               <h1
                 className="text-3d font-black leading-[0.85] tracking-tighter"
-                style={{ fontSize: "clamp(6rem, 22vw, 22rem)" }}
+                style={{ fontSize: "clamp(4rem, 14vw, 14rem)" }}
               >
                 <WordsPullUp text="Crave" />
               </h1>
