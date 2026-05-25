@@ -1,10 +1,11 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { WordsPullUp } from "./WordsPullUp";
 import { Crumbs } from "./Crumbs";
 
 export const Hero = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 50, damping: 20 });
@@ -21,16 +22,38 @@ export const Hero = () => {
     return () => window.removeEventListener("mousemove", handler);
   }, [mx, my]);
 
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.defaultMuted = true;
+    v.setAttribute("muted", "");
+    v.setAttribute("playsinline", "");
+    const tryPlay = () => v.play().catch(() => {});
+    tryPlay();
+    const onTouch = () => tryPlay();
+    document.addEventListener("touchstart", onTouch, { once: true, passive: true });
+    document.addEventListener("click", onTouch, { once: true });
+    return () => {
+      document.removeEventListener("touchstart", onTouch);
+      document.removeEventListener("click", onTouch);
+    };
+  }, []);
+
   return (
     <section className="relative min-h-screen p-3 md:p-6">
       <div className="relative h-[calc(100vh-1.5rem)] md:h-[calc(100vh-3rem)] rounded-3xl overflow-hidden">
         {/* Background video */}
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          preload="auto"
+          controls={false}
+          disablePictureInPicture
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
           poster="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1920"
         >
           <source src="/hero.mp4" type="video/mp4" />
