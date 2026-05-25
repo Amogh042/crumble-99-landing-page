@@ -50,7 +50,7 @@ export const Hero = () => {
           loop
           muted
           playsInline
-          playsInline
+          preload="auto"
           preload="auto"
           controls={false}
           disablePictureInPicture
