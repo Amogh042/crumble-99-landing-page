@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { WordsPullUp } from "./WordsPullUp";
 import { Crumbs } from "./Crumbs";
 
@@ -98,12 +99,12 @@ export const Hero = () => {
               <p className="text-cream/85 text-base md:text-lg leading-relaxed max-w-sm">
                 Freshly baked. Perfectly crafted. Every bite melts into a moment of pure indulgence.
               </p>
-              <button className="group inline-flex items-center gap-3 bg-cream text-primary-foreground rounded-full pl-6 pr-2 py-2 font-medium hover:gap-5 hover:shadow-[0_0_40px_hsl(var(--gold)/0.6)] transition-all duration-500 hover:scale-105">
+              <Link to="/shop" className="group inline-flex items-center gap-3 bg-cream text-primary-foreground rounded-full pl-6 pr-2 py-2 font-medium hover:gap-5 hover:shadow-[0_0_40px_hsl(var(--gold)/0.6)] transition-all duration-500 hover:scale-105">
                 <span>Order Fresh Cookies</span>
                 <span className="w-10 h-10 rounded-full bg-primary-foreground text-cream flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
                   <ArrowUpRight className="w-4 h-4" />
                 </span>
-              </button>
+              </Link>
             </motion.div>
           </div>
         </div>
