@@ -53,7 +53,6 @@ export const Hero = () => {
           preload="auto"
           controls={false}
           disablePictureInPicture
-          disablePictureInPicture
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
           poster="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1920"
         >
