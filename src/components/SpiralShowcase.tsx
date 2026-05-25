@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useAnimationFrame, animate } from "framer-motion";
-import { useRef, useState, PointerEvent as RPE, useMemo } from "react";
+import { useRef, useState, PointerEvent as RPE } from "react";
 import { Cookie } from "@/data/cookies";
 import { Link } from "react-router-dom";
 import { Star } from "lucide-react";
