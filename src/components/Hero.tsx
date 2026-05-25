@@ -73,7 +73,7 @@ export const Hero = () => {
           transition={{ delay: 1, duration: 1 }}
           className="absolute top-28 left-1/2 -translate-x-1/2 text-center"
         >
-          <p className="text-xs tracking-[0.4em] text-cream/60 uppercase">Est. 2099 · Crumble Atelier</p>
+          <p className="text-xs tracking-[0.4em] text-cream/60 uppercase font-sans text-center">Est. 2026 · Crumble Atelier</p>
         </motion.div>
 
         {/* Hero text bottom */}
