@@ -49,7 +49,7 @@ export const Hero = () => {
           autoPlay
           loop
           muted
-          muted
+          playsInline
           playsInline
           preload="auto"
           controls={false}
