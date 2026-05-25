@@ -157,19 +157,17 @@ const SpiralCard = ({
   rotation: any;
   onSelect: () => void;
 }) => {
-  // Compute "front-facing-ness" based on combined angle
   const opacity = useMotionValue(1);
-  const blur = useMotionValue(0);
   const scale = useMotionValue(1);
+  const filter = useMotionValue("blur(0px)");
 
   useAnimationFrame(() => {
     const total = ((rotation.get() + angle) % 360 + 360) % 360;
-    // 0 = facing camera, 180 = behind
-    const facing = Math.min(total, 360 - total); // 0..180
-    const norm = facing / 180; // 0..1
+    const facing = Math.min(total, 360 - total);
+    const norm = facing / 180;
     opacity.set(1 - norm * 0.85);
-    blur.set(norm * 8);
     scale.set(1 - norm * 0.25);
+    filter.set(`blur(${norm * 6}px)`);
   });
 
   return (
@@ -180,40 +178,34 @@ const SpiralCard = ({
       style={{
         transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
         transformStyle: "preserve-3d",
+        opacity,
+        scale,
+        filter,
       }}
     >
       <motion.div
-        style={{
-          opacity,
-          filter: useMemo(() => blur, [blur]) && (`blur(${0}px)`) as any,
-          scale,
-        }}
-        className="relative"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 4 + (angle % 7) * 0.3, repeat: Infinity, ease: "easeInOut" }}
+        className={`relative rounded-full overflow-hidden border ${isActive ? "border-gold/60 shadow-[0_30px_80px_hsl(var(--gold)/0.4)]" : "border-cream/10"} `}
       >
-        <motion.div
-          style={{ filter: blur.get() ? `blur(${blur.get()}px)` : undefined }}
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 4 + (angle % 7) * 0.3, repeat: Infinity, ease: "easeInOut" }}
-          className={`relative rounded-full overflow-hidden border ${isActive ? "border-gold/60 shadow-[0_30px_80px_hsl(var(--gold)/0.4)]" : "border-cream/10"} `}
+        <div
+          className={`relative ${isActive ? "w-[260px] h-[260px] md:w-[340px] md:h-[340px]" : "w-[170px] h-[170px] md:w-[210px] md:h-[210px]"} transition-all duration-500`}
         >
-          <div
-            className={`relative ${isActive ? "w-[280px] h-[280px] md:w-[360px] md:h-[360px]" : "w-[180px] h-[180px] md:w-[220px] md:h-[220px]"} transition-all duration-500`}
-          >
-            <img
-              src={cookie.image}
-              alt={cookie.name}
-              className="absolute inset-0 w-full h-full object-cover"
-              draggable={false}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-jet/80 via-transparent to-transparent" />
-            {isActive && (
-              <div className="absolute inset-x-0 bottom-3 text-center">
-                <p className="font-display text-gold text-lg">₹{cookie.price}</p>
-              </div>
-            )}
-          </div>
-        </motion.div>
+          <img
+            src={cookie.image}
+            alt={cookie.name}
+            className="absolute inset-0 w-full h-full object-cover"
+            draggable={false}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-jet/80 via-transparent to-transparent" />
+          {isActive && (
+            <div className="absolute inset-x-0 bottom-3 text-center">
+              <p className="font-display text-gold text-lg">₹{cookie.price}</p>
+            </div>
+          )}
+        </div>
       </motion.div>
     </motion.button>
   );
 };
+
