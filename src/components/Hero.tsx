@@ -22,6 +22,24 @@ export const Hero = () => {
     return () => window.removeEventListener("mousemove", handler);
   }, [mx, my]);
 
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.defaultMuted = true;
+    v.setAttribute("muted", "");
+    v.setAttribute("playsinline", "");
+    const tryPlay = () => v.play().catch(() => {});
+    tryPlay();
+    const onTouch = () => tryPlay();
+    document.addEventListener("touchstart", onTouch, { once: true, passive: true });
+    document.addEventListener("click", onTouch, { once: true });
+    return () => {
+      document.removeEventListener("touchstart", onTouch);
+      document.removeEventListener("click", onTouch);
+    };
+  }, []);
+
   return (
     <section className="relative min-h-screen p-3 md:p-6">
       <div className="relative h-[calc(100vh-1.5rem)] md:h-[calc(100vh-3rem)] rounded-3xl overflow-hidden">
