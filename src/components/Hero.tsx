@@ -51,7 +51,7 @@ export const Hero = () => {
           muted
           playsInline
           preload="auto"
-          preload="auto"
+          controls={false}
           controls={false}
           disablePictureInPicture
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
