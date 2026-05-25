@@ -45,11 +45,16 @@ export const Hero = () => {
       <div className="relative h-[calc(100vh-1.5rem)] md:h-[calc(100vh-3rem)] rounded-3xl overflow-hidden">
         {/* Background video */}
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
+          defaultMuted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          preload="auto"
+          controls={false}
+          disablePictureInPicture
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
           poster="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1920"
         >
           <source src="/hero.mp4" type="video/mp4" />
