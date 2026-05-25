@@ -5,6 +5,7 @@ import { WordsPullUp } from "./WordsPullUp";
 import { Crumbs } from "./Crumbs";
 
 export const Hero = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 50, damping: 20 });
