@@ -11,7 +11,7 @@ const Index = () => (
     <Features />
     <footer className="px-6 py-12 text-center text-cream/40 text-sm">
       <p className="font-display text-gold text-2xl mb-2">Crumble 99</p>
-      <p>© 2025 — Baked with obsession.</p>
+      <p>© 2026 — Baked with obsession.</p>
     </footer>
   </main>
 );
