@@ -1,5 +1,12 @@
 import { Link } from "react-router-dom";
 import { Instagram, Mail } from "lucide-react";
+import { cookies } from "@/data/cookies";
+
+const imageCredits = cookies.flatMap((cookie) =>
+  cookie.imageAttribution
+    ? [{ cookieName: cookie.name, ...cookie.imageAttribution }]
+    : [],
+);
 
 export const SiteFooter = () => (
   <footer className="bg-jet border-t border-cream/5 px-6 md:px-12 py-16">
@@ -26,6 +33,25 @@ export const SiteFooter = () => (
         </ul>
       </div>
     </div>
+    {imageCredits.length > 0 && (
+      <details className="max-w-7xl mx-auto mt-10 text-xs text-cream/40">
+        <summary className="cursor-pointer hover:text-cream/70 transition-colors">Image credits</summary>
+        <ul className="mt-3 grid md:grid-cols-2 gap-x-8 gap-y-2">
+          {imageCredits.map((credit) => (
+            <li key={credit.cookieName}>
+              {credit.cookieName}: “{credit.title}” by{" "}
+              <a href={credit.sourceUrl} target="_blank" rel="noreferrer" className="underline hover:text-cream/70">
+                {credit.creator}
+              </a>
+              {" — "}
+              <a href={credit.licenseUrl} target="_blank" rel="noreferrer" className="underline hover:text-cream/70">
+                {credit.license}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    )}
     <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-cream/5 flex flex-col md:flex-row items-center justify-between gap-3 text-cream/40 text-xs">
       <p>© 2026 Crumble 99 — Baked with obsession.</p>
       <p className="tracking-widest uppercase">Mumbai · Made small. Shipped lovingly.</p>

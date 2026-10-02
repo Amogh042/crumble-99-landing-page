@@ -87,4 +87,145 @@
     backdrop-filter: blur(12px);
     border: 1px solid hsl(var(--cream) / 0.08);
   }
+
+  .film-tape-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 430px;
+    overflow: hidden;
+  }
+
+  .film-tape-section::before,
+  .film-tape-section::after {
+    content: "";
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    width: 20px;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent, hsl(var(--jet) / 0.95), transparent);
+  }
+
+  .film-tape-section::before {
+    left: 0;
+  }
+
+  .film-tape-section::after {
+    right: 0;
+  }
+
+  .film-tape-window {
+    position: relative;
+    width: min(100%, 1180px);
+    overflow: hidden;
+    padding: 18px 0;
+  }
+
+  .film-tape-window::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, hsl(var(--jet)) 0%, transparent 10%, transparent 90%, hsl(var(--jet)) 100%);
+    z-index: 1;
+  }
+
+  .film-tape-track {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: max-content;
+    animation: film-tape-flow 22s linear infinite;
+  }
+
+  .film-tape-window:hover .film-tape-track {
+    animation-play-state: paused;
+  }
+
+  .film-tape-item {
+    flex: 0 0 auto;
+  }
+
+  .film-tape-frame {
+    position: relative;
+    width: 210px;
+    height: 250px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid hsl(var(--gold) / 0.62);
+    background: hsl(var(--chocolate));
+    box-shadow: inset 0 0 0 1px hsl(var(--cream) / 0.35), 0 12px 40px hsl(var(--jet) / 0.65);
+  }
+
+  .film-tape-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid hsl(var(--cream) / 0.30);
+    pointer-events: none;
+  }
+
+  .film-tape-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: transform 420ms ease, filter 420ms ease;
+  }
+
+  .film-tape-frame:hover .film-tape-image {
+    transform: scale(1.08);
+    filter: saturate(1.24);
+  }
+
+  .film-tape-hover {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    background: linear-gradient(180deg, transparent, hsl(var(--jet) / 0.88));
+    opacity: 0;
+    transition: opacity 240ms ease;
+  }
+
+  .film-tape-frame:hover .film-tape-hover,
+  .film-tape-frame:focus-within .film-tape-hover {
+    opacity: 1;
+  }
+
+  .film-tape-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: hsl(var(--cream));
+    letter-spacing: 0.08em;
+    text-align: center;
+  }
+
+  .film-tape-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 7px 15px;
+    background: hsl(var(--cream));
+    color: hsl(var(--primary-foreground));
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  @keyframes film-tape-flow {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 }

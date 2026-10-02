@@ -9,6 +9,13 @@ export interface Cookie {
   rating: number;
   tags: Tag[];
   image: string;
+  imageAttribution?: {
+    title: string;
+    creator: string;
+    sourceUrl: string;
+    license: string;
+    licenseUrl: string;
+  };
   ingredients: string[];
   story: string;
 }
@@ -25,7 +32,14 @@ export const cookies: Cookie[] = [
     price: 699,
     rating: 4.9,
     tags: ["Bestseller", "Premium", "Chocolate"],
-    image: img("1606312619070-d48b4c652a52"),
+    image: "https://live.staticflickr.com/5303/5616289211_433f35fa25_b.jpg",
+    imageAttribution: {
+      title: "Chocolate Chocolate Chip Cookies",
+      creator: "slgckgc",
+      sourceUrl: "https://www.flickr.com/photos/14771153@N04/5616289211",
+      license: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    },
     ingredients: ["Belgian 70% cacao", "Cultured butter", "Madagascar vanilla", "French sea salt"],
     story: "Hand-piped molten ganache, sealed inside a brown-butter dough and baked à la minute.",
   },
@@ -49,7 +63,14 @@ export const cookies: Cookie[] = [
     price: 999,
     rating: 5.0,
     tags: ["Premium", "Limited Edition", "Exotic"],
-    image: img("1558961363-fa8fdf82db35"),
+    image: "https://live.staticflickr.com/5208/5249239555_e840c5885d.jpg",
+    imageAttribution: {
+      title: "Cranberry Pistachio Cookie",
+      creator: "SodexoUSA",
+      sourceUrl: "https://www.flickr.com/photos/43321797@N06/5249239555",
+      license: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    },
     ingredients: ["Iranian pistachio", "Kunafa pastry", "Saffron", "Rosewater"],
     story: "An ode to Levantine confectionery, reimagined as a single, jewel-like cookie.",
   },
@@ -61,7 +82,14 @@ export const cookies: Cookie[] = [
     price: 699,
     rating: 4.8,
     tags: ["Bestseller", "Chocolate", "Premium"],
-    image: img("1558961363-fa8fdf82db35"),
+    image: "https://live.staticflickr.com/3593/4555899449_cac0d088b1_b.jpg",
+    imageAttribution: {
+      title: "Mrs J's triple chocolate cookies",
+      creator: "jeffreyw",
+      sourceUrl: "https://www.flickr.com/photos/7927684@N03/4555899449",
+      license: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    },
     ingredients: ["72% dark", "Single-origin milk", "Tahitian white", "Cocoa nibs"],
     story: "Built in three passes — dough, chunk, drizzle — for textural drama in every bite.",
   },
@@ -73,7 +101,14 @@ export const cookies: Cookie[] = [
     price: 699,
     rating: 4.7,
     tags: ["Premium", "Exotic"],
-    image: img("1551024506-0bccd828d307"),
+    image: "https://live.staticflickr.com/5050/5262651315_abaff55292_b.jpg",
+    imageAttribution: {
+      title: "matcha cookies",
+      creator: "seelensturm",
+      sourceUrl: "https://www.flickr.com/photos/61404197@N00/5262651315",
+      license: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    },
     ingredients: ["Uji matcha", "Valrhona Ivoire", "Hokkaido milk powder"],
     story: "Vivid jade dough flecked with melting pearls of white chocolate.",
   },
@@ -85,7 +120,14 @@ export const cookies: Cookie[] = [
     price: 499,
     rating: 4.8,
     tags: ["Bestseller", "Premium"],
-    image: img("1568051243851-f9b136146e97"),
+    image: "https://live.staticflickr.com/7481/15410331344_ccb702958b_b.jpg",
+    imageAttribution: {
+      title: "Milk Chocolate-Dipped Hazelnut Sandies Sarah T.",
+      creator: "thebittenword.com",
+      sourceUrl: "https://www.flickr.com/photos/22198928@N00/15410331344",
+      license: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    },
     ingredients: ["Piedmont hazelnut", "Brown butter", "Maldon salt", "Demerara"],
     story: "The cookie our pastry chef bakes for herself, off-menu, every Sunday.",
   },
@@ -97,7 +139,14 @@ export const cookies: Cookie[] = [
     price: 499,
     rating: 4.7,
     tags: ["Stuffed"],
-    image: img("1612203985729-70726954388c"),
+    image: "https://live.staticflickr.com/8497/8301583602_e3b3498bd1_b.jpg",
+    imageAttribution: {
+      title: "Black and White Red Velvet Cookies",
+      creator: "wizardofozgurl",
+      sourceUrl: "https://www.flickr.com/photos/18663463@N03/8301583602",
+      license: "CC BY-SA 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+    },
     ingredients: ["Dutched cocoa", "Cultured cream cheese", "Buttermilk"],
     story: "Velvet on the outside, cheesecake on the inside.",
   },
@@ -109,7 +158,14 @@ export const cookies: Cookie[] = [
     price: 499,
     rating: 4.8,
     tags: ["Bestseller", "Premium"],
-    image: img("1587049352846-4a222e784d38"),
+    image: "https://live.staticflickr.com/7001/13456002714_40b0d741cb.jpg",
+    imageAttribution: {
+      title: "Amazing Almond Cookies",
+      creator: "Andrea_Nguyen",
+      sourceUrl: "https://www.flickr.com/photos/41993463@N08/13456002714",
+      license: "CC BY 2.0",
+      licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    },
     ingredients: ["Marcona almond", "Salted caramel", "Brown butter"],
     story: "A study in contrast — pillowy centre, glass-like caramel crunch.",
   },

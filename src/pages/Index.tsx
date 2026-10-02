@@ -21,9 +21,9 @@ const Index = () => (
       >
         <p className="text-[10px] tracking-[0.5em] text-gold uppercase mb-3">The Atelier</p>
         <h2 className="font-display text-cream text-4xl md:text-6xl lg:text-7xl leading-[0.95]">
-          Fifteen <span className="text-gold">small</span> obsessions.
+          Eight <span className="text-gold">small</span> obsessions.
         </h2>
-        <p className="text-cream/50 mt-4 max-w-md mx-auto text-sm">Drag the spiral. Pull it. Let it spin. Find the one that makes you stop.</p>
+        <p className="text-cream/50 mt-4 max-w-md mx-auto text-sm">Choose your next craving from the atelier.</p>
       </motion.div>
       <SpiralShowcase cookies={cookies} />
       <div className="text-center mt-8">
