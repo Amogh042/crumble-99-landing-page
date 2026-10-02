@@ -41,17 +41,33 @@ const CartCtx = createContext<Ctx | null>(null);
 
 const lookup = (id: string) => cookies.find((c) => c.id === id)!;
 
+const getStorageValue = <T,>(key: string, fallback: T): T => {
+  if (typeof window === "undefined" || !window.localStorage) return fallback;
+
+  try {
+    const stored = window.localStorage.getItem(key);
+    return stored ? JSON.parse(stored) as T : fallback;
+  } catch {
+    return fallback;
+  }
+};
+
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [items, setItems] = useState<CartItem[]>(() => {
-    try { return JSON.parse(localStorage.getItem("crumble.cart") || "[]"); } catch { return []; }
-  });
-  const [orders, setOrders] = useState<Order[]>(() => {
-    try { return JSON.parse(localStorage.getItem("crumble.orders") || "[]"); } catch { return []; }
-  });
+  const [items, setItems] = useState<CartItem[]>(() => getStorageValue<CartItem[]>("crumble.cart", []));
+  const [orders, setOrders] = useState<Order[]>(() => getStorageValue<Order[]>("crumble.orders", []));
   const [drawerOpen, setDrawer] = useState(false);
 
-  useEffect(() => { localStorage.setItem("crumble.cart", JSON.stringify(items)); }, [items]);
-  useEffect(() => { localStorage.setItem("crumble.orders", JSON.stringify(orders)); }, [orders]);
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      window.localStorage.setItem("crumble.cart", JSON.stringify(items));
+    }
+  }, [items]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      window.localStorage.setItem("crumble.orders", JSON.stringify(orders));
+    }
+  }, [orders]);
 
   // Animate statuses forward over time
   useEffect(() => {

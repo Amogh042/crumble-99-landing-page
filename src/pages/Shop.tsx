@@ -24,7 +24,7 @@ const Shop = () => {
     <PageShell
       eyebrow="The Atelier"
       title={<>Our <span className="text-gold">Cookies</span></>}
-      lede="Fifteen small obsessions. Drag the spiral, lose yourself, then pick your favourite."
+      lede="Eight small obsessions. Pick your favourite from the circle."
     >
       <SpiralShowcase cookies={cookies} />
 
